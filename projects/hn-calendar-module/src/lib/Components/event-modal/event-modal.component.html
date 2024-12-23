@@ -1,0 +1,29 @@
+<div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Add New Event</h2>
+        <button class="close-btn" (click)="closeModal()">×</button>
+      </div>
+  
+      <form>
+        <label for="title">Event Title</label>
+        <input type="text" id="title" [(ngModel)]="newEvent.title" name="title" required />
+  
+        <div class="datetime-picker">
+          <label for="start">Start Time</label>
+          <input type="datetime-local" id="start" [(ngModel)]="newEvent.start" name="start" required />
+        
+          <!-- Display the selected date and time with styling -->
+          <span *ngIf="newEvent.start" class="selected-date">
+            Selected Date & Time: {{ newEvent.start | date:'fullDate' }} {{ newEvent.start | date:'shortTime' }}
+          </span>
+        </div>
+  
+        <label for="color">Event Color</label>
+        <input type="color" id="color" [(ngModel)]="newEvent.color" name="color" />
+  
+        <button type="button" (click)="saveEvent()">Save Event</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,14 @@
+{
+  "name": "hn-calendar-module",
+  "version": "1.0.0",
+  "description": "A reusable Angular calendar library.",
+  "author": "Khawaja Asad",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^14.2.0",
+    "@angular/core": "^14.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

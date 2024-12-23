@@ -1,0 +1,18 @@
+<div class="tooltip-content" [style.top.px]="positionY" [style.left.px]="positionX">
+    <strong>{{ event.title }}</strong>
+    
+    <p>
+      <span class="tooltip-label">Start:</span>
+      {{ event.start | date: 'fullDate' }} {{ event.start | date: 'shortTime' }}
+    </p>
+    
+    <p *ngIf="event.end">
+      <span class="tooltip-label">End:</span>
+      {{ event.end | date: 'fullDate' }} {{ event.end | date: 'shortTime' }}
+    </p>
+    
+    <p *ngIf="event.description">
+      <span class="tooltip-label">Description:</span> {{ event.description }}
+    </p>
+  </div>
+  

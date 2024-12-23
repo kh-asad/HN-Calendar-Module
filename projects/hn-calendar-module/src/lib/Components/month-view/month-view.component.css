@@ -1,0 +1,138 @@
+/* Month View Styles */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Space out header and grid */
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem; /* Consistent font size */
+    }
+  }
+
+  .calendar-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    
+    .day-name {
+      font-weight: bold;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 100%;
+    flex-grow: 1;
+    height: 100%;
+
+    .calendar-day {
+      position: relative;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      text-align: center;
+      box-sizing: border-box;
+      min-height: 80px;
+      overflow: hidden; /* Set a minimum height for better spacing */
+      
+      &.other-month {
+        opacity: 0.3;
+      }
+
+      &:hover {
+        background-color: #d2e0fb; /* Change background on hover */
+        transform: scale(0.95); /* Slightly enlarge the slot */
+      }
+
+      /* Click animation */
+      &:active {
+        transform: scale(0.90); /* Shrink the slot slightly when clicked */
+      }
+
+      .event {
+        margin-top: 2px;
+        padding: 2px 5px;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 0.8rem;
+        color: white;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .event-title {
+        font-weight: bold;
+      }
+
+      .event-time {
+        font-size: 0.75rem;
+      }
+      
+      .more-events {
+        margin-top: 5px;
+        font-size: 0.8rem;
+        color: #333;
+        cursor: pointer;
+      }
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .calendar-header {
+      padding: 8px;
+    }
+
+    .calendar-grid {
+      gap: 3px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .calendar-header {
+      padding: 5px;
+    }
+
+    .calendar-days-header {
+      font-size: 0.8rem;
+    }
+
+    .calendar-grid {
+      gap: 2px;
+    }
+
+    .calendar-day {
+      font-size: 0.7rem;
+      padding: 6px;
+      min-height: 60px; /* Adjust for smaller screens */
+    }
+
+    .event {
+      font-size: 0.7rem;
+      padding: 2px 4px;
+    }
+  }
+}

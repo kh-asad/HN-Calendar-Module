@@ -1,0 +1,40 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button class="next-btn" (click)="previousMonth()">Previous</button>
+    <h2>{{ monthName }} {{ currentYear }}</h2>
+    <button class="next-btn" (click)="nextMonth()">Next</button>
+  </div>
+  
+  <div class="calendar-days-header">
+    <div *ngFor="let day of daysOfWeek" class="day-name">
+      {{ day }}
+    </div>
+  </div>
+  
+  <div class="calendar-grid">
+    <div *ngFor="let day of daysInMonth; let i = index" class="calendar-day" [class.other-month]="day.otherMonth"  (click)="openModal(day.date)">
+      <span>{{ day.date | date: 'd' }}</span>
+      <!-- Display a maximum of 3 events per day -->
+      <div *ngFor="let event of day.events | slice:0:maxEventsToShow" 
+           [style.background-color]="event.color || defaultEventColor" 
+           (mouseenter)="showTooltip($event, event)"
+           (mouseleave)="hideTooltip()"
+           class="event">
+        {{ event.title }}
+      </div>
+      <!-- Show more events if they exceed the maxEventsToShow limit -->
+      <div *ngIf="day.events.length > maxEventsToShow" class="more-events">
+        +{{ day.events.length - maxEventsToShow }} more
+      </div>
+    </div>
+  </div>
+
+  <app-info-tooltip 
+    *ngIf="hoveredEvent" 
+    [event]="hoveredEvent" 
+    [style.top.px]="tooltipPosition.y" 
+    [style.left.px]="tooltipPosition.x">
+  </app-info-tooltip>
+  <event-modal *ngIf="isModalOpen" (eventAdded)="addEvent($event)" (close)="closeModal()" [selectedTime]="selectedDate ? selectedDate.toISOString() : ''"></event-modal>
+</div>
+  

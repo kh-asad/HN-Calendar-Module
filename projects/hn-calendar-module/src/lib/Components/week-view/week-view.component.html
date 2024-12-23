@@ -1,0 +1,49 @@
+  <div class="calendar-container">
+    <!-- Calendar Header -->
+    <div class="calendar-header">
+      <button class="next-btn" (click)="previousWeek()">Previous</button>
+      <h2>{{ monthDisplay }}</h2>
+      <button class="next-btn" (click)="nextWeek()">Next</button>
+    </div>
+
+    <div class="calendar-alignment">
+      <div class="calendar-days-header">
+        <div class="day-header" *ngFor="let day of weekDays">
+          <div>{{ day.date | date: 'EEE' }}</div>
+          <div>{{ day.date | date: 'd' }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="calendar-grid">
+      <!-- Hour Labels -->
+      <div class="hour-column">
+        <div *ngFor="let hour of hours" class="hour-label">
+          {{ hour }}:00
+        </div>
+      </div>
+
+      <!-- Days Grid -->
+      <div class="days-grid">
+        <div *ngFor="let day of weekDays" class="day-column">
+          <div *ngFor="let hour of hours" class="hour-slot" (click)="openModal(day.date,hour)">
+            <!-- Display up to maxEventsToShow events side-by-side -->
+            <div class="event-container">
+              <div *ngFor="let event of getEventsForHour(day, hour)"
+                  class="event"
+                  [ngStyle]="{'background-color': event.color, 'top': event.topPosition + '%'}">
+                {{ event.title }}
+              </div>
+            </div>
+            <!-- Show "+ more" if events exceed maxEventsToShow -->
+            <div *ngIf="getEventCountForHour(day, hour) > maxEventsToShow" class="more-events">
+              +{{ getEventCountForHour(day, hour) - maxEventsToShow }} more
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <event-modal *ngIf="isModalOpen" (eventAdded)="addEvent($event)" (close)="closeModal()" [selectedTime]="formattedSelectedTime"></event-modal>
+  </div>

@@ -1,0 +1,174 @@
+/* Main Container Styling */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Header Styling */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.calendar-alignment {
+  width: 95%;
+  padding-left: 50px;
+}
+
+/* Days Header Styling */
+.calendar-days-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.day-header {
+  font-size: 1rem;
+}
+
+/* Calendar Grid Styling */
+.calendar-grid {
+  display: flex;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* Hour Column Styling */
+.hour-column {
+  width: 60px; /* Fixed width for hour labels */
+}
+
+.hour-label {
+  height: 50px; /* Fixed height for each hour */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+/* Days Grid Styling */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  flex: 1;
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hour Slot Styling */
+.hour-slot {
+  height: 50px; /* Fixed height for each hour slot */
+  border-top: 1px solid #ddd;
+  position: relative;
+  border-right: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    background-color: #d2e0fb; /* Change background on hover */
+  }
+
+  /* Click animation */
+  &:active {
+    transform: scale(0.98); /* Shrink the slot slightly when clicked */
+  }
+}
+
+/* Event Container Styling */
+.event-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Adjust spacing between events */
+  width: 100%;
+  padding: 0 5px;
+}
+
+/* Event Styling */
+.event {
+  margin-top: 1px;
+  /* position: absolute; */
+  /* left: 5px; */
+  /* right: 5px; */
+  padding: 2px 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 25px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Display multiple events side-by-side */
+.event-container > .event {
+  top: auto; /* Reset top positioning */
+}
+
+.more-events {
+  font-size: 0.8rem;
+  color: #888;
+  /* position: absolute; */
+  /* bottom: 2px; */
+  /* right: 5px; */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .calendar-header h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .day-header {
+    font-size: 0.8rem;
+  }
+
+  .hour-label, .hour-slot {
+    height: 40px; /* Adjust height for smaller screens */
+  }
+
+  .calendar-alignment {
+    padding-left: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-header h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .day-header {
+    font-size: 0.7rem;
+  }
+
+  .hour-label, .hour-slot {
+    height: 35px; /* Further adjust height for very small screens */
+  }
+
+  .calendar-alignment {
+    padding-left: 25px;
+  }
+}

@@ -1,0 +1,165 @@
+/* src/lib/styles/global-styles.css */
+.next-btn {
+  background-color: #007BFF; /* Blue color */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding around the text */
+  margin: 5px;
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.next-btn:hover {
+  background-color: #0056b3; /* Darker blue shade on hover */
+  transform: translateY(-2px); /* Button slightly moves up */
+}
+
+.next-btn:active {
+  background-color: #004085; /* Even darker shade when clicked */
+  transform: translateY(0); /* Reset the hover effect when clicked */
+}
+
+.next-btn:focus {
+  outline: none; /* Remove focus outline */
+}
+
+/* Container to handle flex behavior */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 95%; /* Ensure it takes 95% of available width */
+  /* height: 95vh; */
+  max-width: 100%; /* Prevent it from overflowing beyond the parent's width */
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent scrollbars on container */
+  background-color: #f9f9f9; /* Light gray background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+/* Navigation area at the top */
+.calendar-navigation {
+  display: flex;
+  justify-content: flex-end; /* Align items to the edges */
+  align-items: center; /* Vertically center the items */
+  width: 100%; /* Full width */
+  padding: 10px 15px; /* Horizontal and vertical padding */
+  background-color: #D2E0FB; /* Dark background */
+  border-radius: 8px;
+  color: #fff; /* White text color for contrast */
+  box-sizing: border-box;
+}
+
+/* Dropdown menu styles */
+#view-selector {
+  font-size: 16px;
+  padding: 8px;
+  width: auto;
+  max-width: 100%; /* Ensure it doesn't overflow */
+  background-color: #fff; /* White background */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px;
+  color: #333; /* Dark text for readability */
+  transition: background-color 0.3s ease;
+  margin: 0; /* Ensure there's no additional margin */
+}
+
+/* Dropdown hover and focus styles */
+#view-selector:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+  border-color: #bbb; /* Slightly darker border on hover */
+}
+
+#view-selector:focus {
+  outline: none;
+  border-color: #007BFF; /* Blue border when focused */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue glow effect */
+}
+
+/* Specific view containers (Day, Week, Month) */
+hn-calendar-day,
+hn-calendar-week,
+hn-calendar-month {
+  width: 100%; /* Take up full container width */
+  height: calc(100% - 60px); /* Subtract space for navigation */
+  overflow: auto; /* Allow scrolling within the calendar content */
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+}
+
+/* Specific adjustments for each view if necessary */
+hn-calendar-day,
+hn-calendar-week {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Calendar view color adjustments */
+hn-calendar-day .calendar-day {
+  background-color: #f7f7f7; /* Very light gray background for each day */
+  border: 1px solid #ddd; /* Soft border for day cells */
+}
+
+hn-calendar-week .calendar-day {
+  background-color: #eef2f7; /* Slightly lighter grayish-blue for week days */
+  border: 1px solid #ddd; /* Matching soft borders */
+}
+
+hn-calendar-month .calendar-day {
+  background-color: #ffffff; /* Pure white background for month days */
+  border: 1px solid #ddd; /* Matching soft borders */
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+  .calendar-container {
+    width: 95%;
+    height: 95vh;
+    max-width: 100%;
+  }
+
+  .calendar-navigation {
+    margin-bottom: 15px;
+  }
+
+  #view-selector {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  hn-calendar-day,
+  hn-calendar-week,
+  hn-calendar-month {
+    padding: 10px; /* Add padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-container {
+    width: 95%;
+    height: 95vh;
+  }
+
+  #view-selector {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  .next-btn {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  hn-calendar-day,
+  hn-calendar-week,
+  hn-calendar-month {
+    font-size: 14px; /* Adjust font size */
+    padding: 5px;
+  }
+}
